@@ -5,12 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticketing-dev-374206
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: villacodes/auth
   artifacts:
-    - image: us.gcr.io/ticketing-dev-374206/auth
+    - image: villacodes/auth
       context: auth
       docker:
         dockerfile: Dockerfile
