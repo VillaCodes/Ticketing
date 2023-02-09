@@ -27,15 +27,26 @@ interface UserDoc extends mongoose.Document {
 //Because we're referring to an actual constructor 
 
 const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    }
+  }, 
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+        delete ret.__v;
+      }
+    }
   }
-});
+);
 
 //pre-save hook for mongoose
 //We use function keyword instead of => because mongoose gives you access
