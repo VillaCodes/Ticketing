@@ -68,5 +68,4 @@ userSchema.statics.build = (attrs: UserAttrs) => {
 
 //model will take in generic type param1, and return generic type param2
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
-
 export { User };
