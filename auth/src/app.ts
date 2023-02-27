@@ -20,7 +20,8 @@ app.use(
     //disables encryption
     signed: false,
     //require that cookies will only be used if user is visiting over an http connection
-    secure: true
+    //we set a check below to let cookies be sent inside of the test environment
+    secure: process.env.NODE_ENV !== 'test'
   })
 );
 
